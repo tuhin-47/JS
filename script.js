@@ -50,9 +50,15 @@ checkErrorHandling()
 let promise = new Promise( function(resolve,reject) {
     console.log("Inside Promise")
     setTimeout( ()=> {
-        console.log(`before resolve ${promise}`)
         resolve("promise resolved value")
-        console.log(`after resolved ${promise}`)
-    } ,3000)
+    } ,1000)
 })
 console.log(promise)
+
+
+let promise2 = new Promise( function(resolve,reject){
+    setTimeout(()=> {}, 2000)
+})
+console.log(promise2)
+promise2.then( data => console.log(`promise2 resolved with ${data}`))
+console.log(promise2)
