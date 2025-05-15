@@ -62,3 +62,54 @@ let promise2 = new Promise( function(resolve,reject){
 console.log(promise2)
 promise2.then( data => console.log(`promise2 resolved with ${data}`))
 console.log(promise2)
+
+
+/**
+ * Scripts and codes for browser
+ * -----------------------------
+ * Difference Between Javascript Function & Arrow Function
+ *  => they handle `this` differently.
+ *     -> Arrow function do not have their own `this`. They inherit `this` from their enclosing scope
+ *  => regular functions have access to `arguments` object. Arrrow functions do not have access to the
+ *     `arguments` object
+ *  => Regular function can be used as constructor, Arrow functions can not be used as constructor
+ * 
+ * 
+ */
+
+const print = console.log
+function regular() {
+    this.value = 100
+    setTimeout( function() {
+        print(`regular function ${value}`)
+    },2000)
+}
+
+function arrow(){
+   this.value = 200;
+    setTimeout( ()=>{
+        print(`arrow function ${value}`)
+    },2000)
+}
+print(`executing regular() function`)
+regular()
+print(`executing arrow() function`)
+arrow()
+
+// testing arguments objects
+
+function argTest(a,b,c) {
+    console.log(arguments)
+    console.log(`printing arguments`)
+    for(let i = 0; i < arguments.length; i++)
+        console.log(`arguments[${i}] : ${arguments[i]}`)
+}
+const arrowArgTest = () =>{
+    console.log(arguments)
+}
+console.log(`regular function argTest()`)
+argTest(10,20,30)
+console.log(`arrow function arrowArgTest()`)
+arrowArgTest()
+
+// MORE ON `this` part
